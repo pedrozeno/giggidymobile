@@ -20,18 +20,10 @@
         android:layout_alignTop="@+id/artistImg"
         android:layout_toRightOf="@+id/artistImg"
         android:paddingTop="3dp"
+        android:textSize="@dimen/gigTitle"
         android:textStyle="bold" />
     
-    <!-- Venue -->
-    <TextView
-        android:id="@+id/venueName"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-		android:layout_below="@+id/gigTitle"
-        android:layout_marginTop="1dip"
-        android:layout_toRightOf="@+id/artistImg" />
-    
-    
+        
     <!-- Date -->
 
     <TextView
@@ -40,6 +32,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:textSize="21sp" />
+        android:layout_below="@+id/gigTitle"
+        android:textSize="@dimen/gigDate"/>
+    
+    <!-- Venue -->
+    <TextView
+        android:id="@+id/venueName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/gigTitle"
+        android:layout_marginTop="1dip"
+        android:textSize="@dimen/gigVenue"
+        android:layout_toRightOf="@+id/artistImg" />
+    
+
 
 </RelativeLayout>

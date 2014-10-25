@@ -98,9 +98,15 @@ public class MainActivity extends Activity {
             for(int i=0;i<event.length();i++){
 
                     JSONObject item = event.getJSONObject(i);
-                    GigsModel gn = new GigsModel();
-                    gn.setGigTitle(item.optString("title"));
-                    gn.setGigVenue(item.optString("startDate"));
+                    GigsModel gm = new GigsModel();
+                    gm.setGigTitle(item.getString("title"));
+                    gm.setGigVenue(item.getString("startDate"));
+                    
+                    
+                    JSONObject venueObj = item.getJSONObject("venue");
+					gm.setGigDate(venueObj.getString("name"));
+                    
+                    
                     
                     try {
 						JSONArray imageUrls = events.getJSONArray("image");
@@ -108,7 +114,7 @@ public class MainActivity extends Activity {
 						for(int j=0; j<imageUrls.length(); j++) {
 							JSONObject imageObj = imageUrls.getJSONObject(j);
 							
-							gn.setArtistImg(imageObj.getString("#text"));
+							gm.setArtistImg(imageObj.getString("#text"));
 							if(imageObj.getString("size").equals("medium")) {
 								break;
 							}
@@ -117,7 +123,7 @@ public class MainActivity extends Activity {
 					
 					}
                     
-                    arrGigs.add(gn);
+                    arrGigs.add(gm);
             }
         }
         catch(Exception e){
@@ -172,7 +178,7 @@ public class MainActivity extends Activity {
             GigsModel nm = arrGigs.get(i);
             vh.gigTitle.setText(nm.getGigTitle());
             vh.gigVenue.setText(nm.getGigVenue());
-            vh.gigDate.setText(nm.getGetId());
+            vh.gigDate.setText(nm.getGigDate());
             vh.artistImg.setImageUrl(nm.getArtistImg(), mImageLoader);
             return view;
         }
