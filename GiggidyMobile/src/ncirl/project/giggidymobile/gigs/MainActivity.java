@@ -107,6 +107,7 @@ public class MainActivity extends Activity {
 						
 						for(int j=0; j<imageUrls.length(); j++) {
 							JSONObject imageObj = imageUrls.getJSONObject(j);
+							
 							gn.setArtistImg(imageObj.getString("#text"));
 							if(imageObj.getString("size").equals("medium")) {
 								break;
@@ -159,8 +160,8 @@ public class MainActivity extends Activity {
                vh = new ViewHolder();
                view = lf.inflate(R.layout.list_row,null);
                vh.gigTitle = (TextView) view.findViewById(R.id.gigTitle);
-               vh.gigDate = (TextView) view.findViewById(R.id.gigDate);
                vh.gigVenue = (TextView) view.findViewById(R.id.venueName);
+               vh.gigDate = (TextView) view.findViewById(R.id.gigDate);
                vh.artistImg = (NetworkImageView) view.findViewById(R.id.artistImg);
                view.setTag(vh);
           }

@@ -12,14 +12,15 @@
         android:layout_marginRight="8dp" />
     
     <!-- Artist Name -->
+
     <TextView
         android:id="@+id/gigTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/artistImg"
         android:layout_toRightOf="@+id/artistImg"
+        android:paddingTop="3dp"
         android:textStyle="bold" />
-    
     
     <!-- Venue -->
     <TextView
@@ -32,11 +33,13 @@
     
     
     <!-- Date -->
+
     <TextView
         android:id="@+id/gigDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:textSize="21sp" />
 
 </RelativeLayout>
