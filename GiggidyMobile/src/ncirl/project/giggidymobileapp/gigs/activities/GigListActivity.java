@@ -73,7 +73,7 @@ public class GigListActivity extends Activity {
         
         //Volley JSONObject Request
 		JsonObjectRequest jr = new JsonObjectRequest(Method.GET,
-				lstHelper.getGigInfo("cork"), null,
+				lstHelper.getGigInfo("london"), null,
 				new Response.Listener<JSONObject>() {
 
 					@Override
