@@ -1,12 +1,14 @@
-package ncirl.project.giggidymobile.gigs;
+package ncirl.project.giggidymobileapp.gigs.models;
+
+import com.android.volley.toolbox.ImageLoader;
 
 public class GigsModel {
 	
 	private String gigTitle;
 	private String gigVenue;
 	private String gigDate;
-	private String artistImg;
-	
+	private String artistImgURL;
+    private ImageLoader imageLoader;
 	
 	public String getGigDate() {
 		return gigDate;
@@ -15,10 +17,11 @@ public class GigsModel {
 		this.gigDate = gigDate;
 	}
 	public String getArtistImg() {
-		return artistImg;
+		return artistImgURL;
 	}
-	public void setArtistImg(String artistImg) {
-		this.artistImg = artistImg;
+	public void setArtistImg(String artistImgURL) {
+		this.artistImgURL = artistImgURL;
+	
 	}
 
 	public String getGigTitle() {

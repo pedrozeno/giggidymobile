@@ -1,7 +1,11 @@
-package ncirl.project.giggidymobile.gigs;
+package ncirl.project.giggidymobileapp.gigs.activities;
 
 
 import java.util.ArrayList;
+
+import ncirl.project.giggidymobileapp.gigs.models.GigsModel;
+import ncirl.project.giggidymobileapp.utils.VolleySingleton;
+import ncirl.project.giggidymobileapp.gigs.helpers.LastFmHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -32,63 +37,63 @@ import com.example.projectattempt.R;
 
 
 
-public class MainActivity extends Activity {
+public class GigListActivity extends Activity {
 	
 	
 	private String TAG = this.getClass().getSimpleName();
     private ListView lstView;
-    private ArrayList<GigsModel> arrGigs ;
-    private LayoutInflater lf;
-    private VolleyAdapter va;
-    private ProgressDialog pd;
+    private ArrayList<GigsModel> gigsArr ;
+    private LayoutInflater inflator;
+    private VolleyAdapter adapter;
+    private ProgressDialog pDialog;
     private RequestQueue myQueue;
-    private ImageLoader mImageLoader;
+    private ImageLoader myImageLoader;
+    LastFmHelper lstHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lf = LayoutInflater.from(this);
+        inflator = LayoutInflater.from(this);
         
-        arrGigs = new ArrayList<GigsModel>();
-        va = new VolleyAdapter();
-        
+        gigsArr = new ArrayList<GigsModel>();
+        adapter = new VolleyAdapter();
         lstView = (ListView) findViewById(R.id.gigListView);
-        lstView.setAdapter(va);
+        lstView.setAdapter(adapter);
+        
+        lstHelper = new LastFmHelper();
 
-        myQueue = Volley.newRequestQueue(this);
-        mImageLoader = new ImageLoader(myQueue, new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
-            public void putBitmap(String url, Bitmap bitmap) {
-                mCache.put(url, bitmap);
-            }
-            public Bitmap getBitmap(String url) {
-                return mCache.get(url);
-            }
-        });
+        //Initialise RequestQueue and ImageLoader
+        myQueue = VolleySingleton.getInstance().getRequestQueue();
+        myImageLoader = VolleySingleton.getInstance().getImageLoader(); 
+       
         
-        String url = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents&limit=100&api_key=91ef7088f6ad4ef274c2a9453165106d&format=json&location=boston";
+        //Start Progress Dialog
+        pDialog = ProgressDialog.show(this,"Synchronizing\n","Please Wait...");
         
-        pd = ProgressDialog.show(this,"Please Wait...","Please Wait...");
-        
-        JsonObjectRequest jr = new JsonObjectRequest(Method.GET,url,null,new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i(TAG,response.toString());
-                parseJSON(response);
-                va.notifyDataSetChanged();
-                pd.dismiss();
-          }
-            
-        },new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i(TAG,error.getMessage());
-            }
-        });
-        myQueue.add(jr);
+        //Volley JSONObject Request
+		JsonObjectRequest jr = new JsonObjectRequest(Method.GET,
+				lstHelper.getGigInfo("cork"), null,
+				new Response.Listener<JSONObject>() {
 
-    }
+					@Override
+					public void onResponse(JSONObject response) {
+						Log.i(TAG, response.toString());
+						parseJSON(response);
+						adapter.notifyDataSetChanged();
+						pDialog.dismiss();
+					}
+
+				}, new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						Log.i(TAG, error.getMessage());
+					}
+				});
+
+		myQueue.add(jr);
+
+	}
     
     private void parseJSON(JSONObject json){
     	
@@ -101,29 +106,30 @@ public class MainActivity extends Activity {
                     GigsModel gm = new GigsModel();
                     gm.setGigTitle(item.getString("title"));
                     gm.setGigVenue(item.getString("startDate"));
-                    
-                    
                     JSONObject venueObj = item.getJSONObject("venue");
 					gm.setGigDate(venueObj.getString("name"));
-                    
-                    
-                    
-                    try {
+					gm.setArtistImg("http://cnet4.cbsistatic.com/hub/i/2011/10/27/" +
+							"a66dfbb7-fdc7-11e2-8c7c-d4ae52e62bcc/android-wallpaper5_2560x1600_1.jpg");
+                  
+					
+					
+					/*  try {
 						JSONArray imageUrls = events.getJSONArray("image");
 						
 						for(int j=0; j<imageUrls.length(); j++) {
 							JSONObject imageObj = imageUrls.getJSONObject(j);
+							//gm.setArtistImg(imageObj.getString("#text"));
 							
-							gm.setArtistImg(imageObj.getString("#text"));
 							if(imageObj.getString("size").equals("medium")) {
 								break;
 							}
 						}
 					} catch (Exception e) {
-					
-					}
+						Toast.makeText(getApplicationContext(), "Cant find image", Toast.LENGTH_SHORT).show();
+						 
+					}*/
                     
-                    arrGigs.add(gm);
+                    gigsArr.add(gm);
             }
         }
         catch(Exception e){
@@ -146,12 +152,12 @@ public class MainActivity extends Activity {
 
         @Override
         public int getCount() {
-            return arrGigs.size();
+            return gigsArr.size();
         }
 
         @Override
         public Object getItem(int i) {
-            return arrGigs.get(i);
+            return gigsArr.get(i);
         }
 
         @Override
@@ -164,7 +170,7 @@ public class MainActivity extends Activity {
             ViewHolder vh ;
            if(view == null){
                vh = new ViewHolder();
-               view = lf.inflate(R.layout.list_row,null);
+               view = inflator.inflate(R.layout.list_row,null);
                vh.gigTitle = (TextView) view.findViewById(R.id.gigTitle);
                vh.gigVenue = (TextView) view.findViewById(R.id.venueName);
                vh.gigDate = (TextView) view.findViewById(R.id.gigDate);
@@ -175,23 +181,24 @@ public class MainActivity extends Activity {
                vh = (ViewHolder) view.getTag();
            }
 
-            GigsModel nm = arrGigs.get(i);
+            GigsModel nm = gigsArr.get(i);
             vh.gigTitle.setText(nm.getGigTitle());
             vh.gigVenue.setText(nm.getGigVenue());
             vh.gigDate.setText(nm.getGigDate());
-            vh.artistImg.setImageUrl(nm.getArtistImg(), mImageLoader);
+            vh.artistImg.setImageUrl(nm.getArtistImg(), myImageLoader);
+            
             return view;
         }
         
-        class  ViewHolder{
-            TextView gigTitle;
-             TextView gigVenue;
-             TextView gigDate;
-             NetworkImageView artistImg;
-
+        private class ViewHolder{
+        	
+        	private TextView gigTitle;
+        	private TextView gigVenue;
+        	private TextView gigDate;
+        	private NetworkImageView artistImg;
         }
-
-    }
+        
+    } 
 
   
 }
