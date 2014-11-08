@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ProjectAttempt</string>
+    <string name="app_name">Giggidy</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
+    <string name="logon_button">Logon</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="submit_button">Submit</string>
+    
+    
     <string name="title_activity_gig_detail">GigDetailActivity</string>
+    <string name="title_activity_logon">LogonActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_gig_list">GigListActivity</string>
 
 </resources>

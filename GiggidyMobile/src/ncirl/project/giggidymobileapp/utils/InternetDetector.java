@@ -1,4 +1,4 @@
-package ncirl.project.giggidymobileapp.parse.logon;
+package ncirl.project.giggidymobileapp.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
