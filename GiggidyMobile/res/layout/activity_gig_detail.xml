@@ -2,15 +2,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.projectattempt.GigDetailActivity" >
+    android:padding="5dp"
+    tools:context=".GigDetailActivity" >
 
-    <TextView
+    
+
+    <ImageView
+        android:id="@+id/ivArtistImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="160dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvHeadliner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivArtistImage"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/ivArtistImage"
+        android:text="Headliner Name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvGigDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvHeadliner"
+        android:layout_below="@+id/tvHeadliner"
+        android:layout_marginTop="5dp"
+        android:text="Date of Gig"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/bttnVenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvGigDate"
+        android:layout_below="@+id/tvGigDate"
+        android:layout_marginTop="5dp"
+        android:text="Venue Button"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvAllArtists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bttnVenue"
+        android:layout_below="@+id/bttnVenue"
+        android:layout_marginTop="5dp"
+        android:text="Artist 1, Artist 2"
+        android:textSize="12sp" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivArtistImage"
+        android:layout_margin="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvArtistBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAllArtists"
+        android:layout_centerVertical="true"
+        android:text="This is a bio of the artist..." />
+
+    <Button
+        android:id="@+id/bttnAttend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:text="Attend" />
 
 </RelativeLayout>

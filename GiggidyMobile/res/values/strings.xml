@@ -13,7 +13,7 @@
     <string name="submit_button">Submit</string>
     
     
-    <string name="title_activity_gig_detail">GigDetailActivity</string>
+    <string name="title_activity_gig_detail">GigDetailTabActivity</string>
     <string name="title_activity_logon">LogonActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_gig_list">GigListActivity</string>

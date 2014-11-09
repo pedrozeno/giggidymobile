@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ncirl.project.giggidymobileapp.parse.logon.LoginActivity"
+            android:name="ncirl.project.giggidymobileapp.gigs.activities.GigListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,10 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".GigDetailActivity"
-            android:label="@string/title_activity_gig_detail" >
-        </activity>
+      
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_logon" >
@@ -40,9 +37,11 @@
             android:label="@string/title_activity_sign_up" >
         </activity>
         <activity
-            android:name="ncirl.project.giggidymobileapp.gigs.activities.GigListActivity"
+            android:name="ncirl.project.giggidymobileapp.gigs.activities.GigDetailActivity"
             android:label="@string/title_activity_gig_list" >
         </activity>
     </application>
 
 </manifest>
+
+

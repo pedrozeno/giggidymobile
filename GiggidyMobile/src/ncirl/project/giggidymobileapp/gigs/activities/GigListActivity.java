@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.util.LruCache;
@@ -19,7 +20,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,10 +43,14 @@ import com.example.projectattempt.R;
 
 public class GigListActivity extends Activity {
 	
+	public final static String EXTRA_ARTIST_INFO = "ncirl.project.giggidymobileapp.gigs.activities.ARTIST";
+	public final static String EXTRA_DATE_INFO = "ncirl.project.giggidymobileapp.gigs.activities.DATE";
+	public final static String EXTRA_VENUE_INFO = "ncirl.project.giggidymobileapp.gigs.activities.VENUE";
+	
 	
 	private String TAG = this.getClass().getSimpleName();
     private ListView lstView;
-    private ArrayList<GigsModel> gigsArr ;
+    private ArrayList<GigsModel> gigsArr;
     private LayoutInflater inflator;
     private VolleyAdapter adapter;
     private ProgressDialog pDialog;
@@ -53,7 +61,7 @@ public class GigListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gig_list);
         inflator = LayoutInflater.from(this);
         
         gigsArr = new ArrayList<GigsModel>();
@@ -69,7 +77,7 @@ public class GigListActivity extends Activity {
        
         
         //Start Progress Dialog
-        pDialog = ProgressDialog.show(this,"Synchronizing\n","Please Wait...");
+        pDialog = ProgressDialog.show(this,"Synchronizing","Please Wait...");
         
         //Volley JSONObject Request
 		JsonObjectRequest jr = new JsonObjectRequest(Method.GET,
@@ -91,10 +99,35 @@ public class GigListActivity extends Activity {
 					}
 				});
 
+		//Add response to Volley RequestQueue
 		myQueue.add(jr);
+		
+		
+		//Open New Page when clicking on item in list
+		lstView.setOnItemClickListener(new OnItemClickListener(){
+
+
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				Intent intent = new Intent(GigListActivity.this, GigDetailActivity.class);
+				GigsModel gm = (GigsModel) adapter.getItem(position);
+				intent.putExtra(EXTRA_ARTIST_INFO, gm.getGigTitle().toString());
+				intent.putExtra(EXTRA_DATE_INFO, gm.getGigDate().toString());
+				intent.putExtra(EXTRA_VENUE_INFO, gm.getGigVenue().toString());
+				
+				startActivity(intent);
+				
+			}
+			
+			
+		});
 
 	}
     
+    ///Parse JSON Response
     private void parseJSON(JSONObject json){
     	
         try{
@@ -104,7 +137,8 @@ public class GigListActivity extends Activity {
 
                     JSONObject item = event.getJSONObject(i);
                     GigsModel gm = new GigsModel();
-                    gm.setGigTitle(item.getString("title"));
+                    JSONObject artistArr = item.getJSONObject("artists");
+                    gm.setGigTitle(artistArr.getString("headliner"));
                     gm.setGigVenue(item.getString("startDate"));
                     JSONObject venueObj = item.getJSONObject("venue");
 					gm.setGigDate(venueObj.getString("name"));
@@ -171,7 +205,7 @@ public class GigListActivity extends Activity {
            if(view == null){
                vh = new ViewHolder();
                view = inflator.inflate(R.layout.list_row,null);
-               vh.gigTitle = (TextView) view.findViewById(R.id.gigTitle);
+               vh.gigHeadliner = (TextView) view.findViewById(R.id.gigTitle);
                vh.gigVenue = (TextView) view.findViewById(R.id.venueName);
                vh.gigDate = (TextView) view.findViewById(R.id.gigDate);
                vh.artistImg = (NetworkImageView) view.findViewById(R.id.artistImg);
@@ -182,21 +216,14 @@ public class GigListActivity extends Activity {
            }
 
             GigsModel nm = gigsArr.get(i);
-            vh.gigTitle.setText(nm.getGigTitle());
+            vh.gigHeadliner.setText(nm.getGigTitle());
             vh.gigVenue.setText(nm.getGigVenue());
             vh.gigDate.setText(nm.getGigDate());
             vh.artistImg.setImageUrl(nm.getArtistImg(), myImageLoader);
             
             return view;
         }
-        
-        private class ViewHolder{
-        	
-        	private TextView gigTitle;
-        	private TextView gigVenue;
-        	private TextView gigDate;
-        	private NetworkImageView artistImg;
-        }
+
         
     } 
 
