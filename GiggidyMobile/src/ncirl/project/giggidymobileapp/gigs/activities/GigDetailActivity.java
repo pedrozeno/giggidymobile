@@ -31,19 +31,23 @@ public class GigDetailActivity extends Activity{
 		Intent intent = getIntent();
 		if (null != intent) {
 			headliner = intent.getStringExtra(EXTRA_ARTIST_INFO);
-			date = intent.getStringExtra(EXTRA_DATE_INFO);
 			venue = intent.getStringExtra(EXTRA_VENUE_INFO);
+			date = intent.getStringExtra(EXTRA_DATE_INFO);
 		}
 		
 		
 		artistsName = (TextView) findViewById(R.id.tvHeadliner);
 		artistsName.setText(headliner);
 		
-		gigDate = (TextView) findViewById(R.id.tvGigDate);
+		gigDate = (TextView) findViewById(R.id.tvGigDate1);
 		gigDate.setText(date);
 		
-		venueName = (Button) findViewById(R.id.bttnVenue);
+		venueName = (Button) findViewById(R.id.bttnVenueName);
 		venueName.setText(venue);
+		
+
+		
+		
 		
         
         

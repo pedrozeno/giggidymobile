@@ -1,4 +1,4 @@
-package ncirl.project.giggidymobileapp.gigs.models;
+package ncirl.project.giggidymobileapp.gigs.activities;
 
 import java.util.ArrayList;
 

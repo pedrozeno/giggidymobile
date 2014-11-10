@@ -1,4 +1,4 @@
-package ncirl.project.giggidymobileapp.gigs.helpers;
+package ncirl.project.giggidymobileapp.gigs.activities;
 
 public class LastFmHelper {
 
