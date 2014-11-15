@@ -21,14 +21,14 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseUser;
  
-public class VolleySingleton extends Application {
+public class AppController extends Application {
  
-    public static final String TAG = VolleySingleton.class.getSimpleName();
+    public static final String TAG = AppController.class.getSimpleName();
  
     private RequestQueue mQueue;
     private ImageLoader mImgLoader;
  
-    private static VolleySingleton mInstance;
+    private static AppController mInstance;
  
     @Override
     public void onCreate() {
@@ -36,7 +36,7 @@ public class VolleySingleton extends Application {
         mInstance = this;
     }
  
-    public static synchronized VolleySingleton getInstance() {
+    public static synchronized AppController getInstance() {
         return mInstance;
     }
  

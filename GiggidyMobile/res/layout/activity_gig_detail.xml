@@ -7,10 +7,10 @@
 
     
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/ivArtistImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
@@ -85,9 +85,10 @@
         android:id="@+id/bttnAttend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAllArtists"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/tvArtistBio"
-        android:layout_marginBottom="37dp"
+        android:layout_alignRight="@+id/bttnVenueName"
+        android:layout_marginBottom="44dp"
         android:text="Attend" />
 
 </RelativeLayout>

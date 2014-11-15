@@ -1,22 +1,36 @@
 package ncirl.project.giggidymobileapp.gigs.activities;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Locale;
+
 public class LastFmHelper {
 
-	private static String LastFM_root_url = "http://ws.audioscrobbler.com/2.0/?method=";
+
 	private static String API_Key = "&api_key=91ef7088f6ad4ef274c2a9453165106d";
+	
 
-	public String getGigInfo(String location) {
+	public String getArtistInfo(String artist) throws UnsupportedEncodingException {
 
-		return LastFM_root_url + "geo.getevents&limit=100" + API_Key
-				+ "&format=json&location=" + location;
-
+		String url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo" +
+				"&location=" + URLEncoder.encode(artist, "UTF-8") +
+				"&api_key=" + API_Key +
+				"&lang=" + Locale.getDefault().getLanguage() +
+                "&format=json";
+		
+		
+		return url;
 	}
+	
+	public String getGigInfo(String location) throws UnsupportedEncodingException {
 
-	public String getArtistInfo(String artist) {
-
-		return LastFM_root_url + "artist.getinfo&artist=" + artist + API_Key
-				+ "&format=json";
-
+		String url = "http://ws.audioscrobbler.com/2.0/?method=geo.getevents" +
+				"&location=" + URLEncoder.encode(location, "UTF-8") +
+				"&api_key=" + API_Key +
+				"&lang=" + Locale.getDefault().getLanguage() +
+                "&format=json&limit=250";
+		
+		return url;
 	}
 
 }
