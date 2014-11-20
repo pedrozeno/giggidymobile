@@ -1,4 +1,4 @@
-package ncirl.project.giggidymobileapp.gigs.activities;
+package ncirl.project.giggidymobile.lastfm;
 
 
 import ncirl.project.giggidymobileapp.utils.AppController;
@@ -21,11 +21,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static ncirl.project.giggidymobileapp.gigs.activities.GigListActivity.EXTRA_ARTIST_INFO;
-import static ncirl.project.giggidymobileapp.gigs.activities.GigListActivity.EXTRA_DATE_INFO;
-import static ncirl.project.giggidymobileapp.gigs.activities.GigListActivity.EXTRA_VENUE_INFO;
-import static ncirl.project.giggidymobileapp.gigs.activities.GigListActivity.EXTRA_ARTIST_IMAGE_INFO;
-//import static ncirl.project.giggidymobileapp.gigs.activities.GigListActivity.EXTRA_GIG_ID_INFO;
+import static ncirl.project.giggidymobile.lastfm.GigListActivity.EXTRA_ARTIST_IMAGE_INFO;
+import static ncirl.project.giggidymobile.lastfm.GigListActivity.EXTRA_ARTIST_INFO;
+import static ncirl.project.giggidymobile.lastfm.GigListActivity.EXTRA_DATE_INFO;
+import static ncirl.project.giggidymobile.lastfm.GigListActivity.EXTRA_VENUE_INFO;
 
 public class GigDetailActivity extends Activity{
 	

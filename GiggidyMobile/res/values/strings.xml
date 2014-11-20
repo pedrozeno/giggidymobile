@@ -2,8 +2,24 @@
 <resources>
 
     <string name="app_name">Giggidy</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- FacebookLogin ID -->
+    <string name="app_id">712892575459340</string>
+
+    <!-- FacebookLogin Activity -->
+    <string name="username">Username</string>
+    <string name="user_email">Email</string>
+    <string name="user_gender">Gender</string>
+    <string name="logout_button">Log Out</string>
+
+    <!-- Home Screen Activity -->
+    <string name="gig_list_button">Gigs</string>
+    <string name="planner_button">Planner</string>
+    <string name="user_profile_button">Profile</string>
+    <string name="log_out_button">Log Out</string>
+
+    <!-- Login Activity -->
     <string name="password_hint">Password</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="email_hint">Email</string>
@@ -11,10 +27,24 @@
     <string name="logon_button">Logon</string>
     <string name="signup_button">Sign Up</string>
     <string name="submit_button">Submit</string>
+
+    <!-- Home Activity -->
+    <string name="welcome_intro">Welcome, stranger!</string>
+    <string name="welcome_message">Hello and welcome to Giggidy! Your one stop shop 
+        for all the latest gig news in your area. Come take a look at what we have 
+        listed and maybe you can find a new buddy to go to a gig with! Simply log in 
+        below and lets get gigging!</string>
+
+    <!-- Activities -->
     <string name="title_activity_gig_detail">GigDetailTabActivity</string>
     <string name="title_activity_logon">LogonActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_gig_list">GigListActivity</string>
     <string name="title_activity_new_gig_list">NewGigListActivity</string>
+    <string name="title_activity_facebook">FacebookActivity</string>
+    <string name="title_activity_user_account">UserAccountActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_planner">PlannerActivity</string>
 
 </resources>

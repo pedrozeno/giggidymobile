@@ -17,10 +17,16 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.example.projectattempt.R;
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
  
+/**
+ * @author paddybyrne
+ *
+ */
 public class AppController extends Application {
  
     public static final String TAG = AppController.class.getSimpleName();
@@ -34,6 +40,8 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        
+        onCreateParse();
     }
  
     public static synchronized AppController getInstance() {
@@ -73,6 +81,24 @@ public class AppController extends Application {
             mQueue.cancelAll(tag);
         }
     }
+    
+    
+    
+    //Initiliase Parse SDK
+    public void onCreateParse() {
+    	
+		
+    	Parse.initialize(this, 
+				"gS91h8EixiaBiHbFk1up4z44VV2pjFBil7DsIUVr",
+				"jwvWqF1C1cjNDp6qcU8922t1FuCngtFLO2o3mP3H"
+		);
+
+		// Set Facebook App Id in strings.xml
+		ParseFacebookUtils.initialize(getString(R.string.app_id));
+	}
+    
+
 }
+
 
 

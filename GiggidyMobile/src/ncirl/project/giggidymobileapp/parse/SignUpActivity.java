@@ -1,6 +1,6 @@
-package ncirl.project.giggidymobileapp.parse.logon;
+package ncirl.project.giggidymobileapp.parse;
 
-import ncirl.project.giggidymobileapp.gigs.activities.GigListActivity;
+import ncirl.project.giggidymobile.lastfm.GigListActivity;
 
 import com.example.projectattempt.R;
 import com.parse.ParseException;

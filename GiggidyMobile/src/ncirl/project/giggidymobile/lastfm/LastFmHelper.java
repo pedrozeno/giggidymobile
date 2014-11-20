@@ -1,4 +1,4 @@
-package ncirl.project.giggidymobileapp.gigs.activities;
+package ncirl.project.giggidymobile.lastfm;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

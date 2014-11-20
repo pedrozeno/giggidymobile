@@ -1,4 +1,4 @@
-package ncirl.project.giggidymobileapp.gigs.activities;
+package ncirl.project.giggidymobile.lastfm;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -13,22 +13,16 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.NetworkImageView;
 import com.example.projectattempt.R;
 
 public class GigListActivity extends Activity {

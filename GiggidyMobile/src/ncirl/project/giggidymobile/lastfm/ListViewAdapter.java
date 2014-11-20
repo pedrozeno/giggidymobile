@@ -1,6 +1,5 @@
-package ncirl.project.giggidymobileapp.gigs.activities;
+package ncirl.project.giggidymobile.lastfm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ncirl.project.giggidymobileapp.utils.AppController;

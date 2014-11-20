@@ -1,6 +1,6 @@
-package ncirl.project.giggidymobileapp.parse.logon;
+package ncirl.project.giggidymobileapp.parse;
 
-import ncirl.project.giggidymobileapp.gigs.activities.GigListActivity;
+import ncirl.project.giggidymobile.lastfm.GigListActivity;
 import ncirl.project.giggidymobileapp.utils.InternetDetector;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,8 +19,6 @@ import android.widget.Toast;
 
 import com.example.projectattempt.R;
 import com.parse.LogInCallback;
-import com.parse.Parse;
-import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
@@ -31,6 +29,8 @@ import com.parse.ParseUser;
  * 
  */
 public class LoginActivity extends Activity {
+	
+	
 
 	Context context;
 	Boolean hasInternet;
@@ -49,7 +49,7 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-		onCreateParse();
+		
 
 		logonBttn = (Button) findViewById(R.id.buttonlogon);
 		signUpBttn = (Button) findViewById(R.id.buttonsignup);
@@ -186,18 +186,7 @@ public class LoginActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
 
-	public void onCreateParse() {
-
-		Parse.initialize(this, "gS91h8EixiaBiHbFk1up4z44VV2pjFBil7DsIUVr",
-				"jwvWqF1C1cjNDp6qcU8922t1FuCngtFLO2o3mP3H");
-
-		ParseUser.enableAutomaticUser();
-		ParseACL defaultACL = new ParseACL();
-
-		defaultACL.setPublicReadAccess(true);
-
-		ParseACL.setDefaultACL(defaultACL, true);
-
-	}
 }
