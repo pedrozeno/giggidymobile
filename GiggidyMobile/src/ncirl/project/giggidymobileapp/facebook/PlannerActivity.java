@@ -1,4 +1,8 @@
-package com.example.projectattempt;
+package ncirl.project.giggidymobileapp.facebook;
+
+import com.example.projectattempt.R;
+import com.example.projectattempt.R.layout;
+import com.example.projectattempt.R.menu;
 
 import android.app.Activity;
 import android.os.Bundle;

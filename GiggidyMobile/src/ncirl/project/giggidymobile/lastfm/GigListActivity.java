@@ -40,6 +40,8 @@ public class GigListActivity extends Activity {
 	private ProgressDialog pDialog;
 	private RequestQueue myQueue;
 	LastFmHelper lstHelper;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

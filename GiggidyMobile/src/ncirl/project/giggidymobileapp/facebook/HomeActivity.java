@@ -1,10 +1,12 @@
-package com.example.projectattempt;
+package ncirl.project.giggidymobileapp.facebook;
 
+import com.example.projectattempt.R;
+import com.example.projectattempt.R.id;
+import com.example.projectattempt.R.layout;
+import com.example.projectattempt.R.menu;
 import com.parse.ParseUser;
 
 import ncirl.project.giggidymobile.lastfm.GigListActivity;
-import ncirl.project.giggidymobileapp.facebook.FacebookLoginActivity;
-import ncirl.project.giggidymobileapp.facebook.UserProfileActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

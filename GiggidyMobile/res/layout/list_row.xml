@@ -20,6 +20,7 @@
         android:layout_alignTop="@+id/artistImg"
         android:layout_toRightOf="@+id/artistImg"
         android:paddingTop="3dp"
+        android:textColor="#254156"
         android:textSize="@dimen/gigTitle"
         android:textStyle="bold" />
     
@@ -30,6 +31,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dip"
+        android:textColor="#254156"
         android:textSize="@dimen/gigVenue"
         android:layout_toRightOf="@+id/artistImg"
         android:layout_below="@+id/gigTitle" />
@@ -42,6 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:textColor="#254156"
+        android:textStyle="bold"
         android:textSize="@dimen/gigDate"/>
     
     

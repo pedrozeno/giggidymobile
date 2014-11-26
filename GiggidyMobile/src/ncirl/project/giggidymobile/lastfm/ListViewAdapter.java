@@ -10,6 +10,7 @@ import com.example.projectattempt.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,8 @@ public class ListViewAdapter extends BaseAdapter {
 		} else {
 			vh = (ViewHolder) view.getTag();
 		}
+		
+		
 
 		GigsModel nm = list.get(i);
 		vh.gigHeadliner.setText(nm.getGigHeadliner());

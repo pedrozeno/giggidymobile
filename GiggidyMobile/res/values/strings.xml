@@ -18,7 +18,12 @@
     <string name="planner_button">Planner</string>
     <string name="user_profile_button">Profile</string>
     <string name="log_out_button">Log Out</string>
-
+    
+    <!-- Gig Detail Activity -->
+    <string name="artist_detail">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently </string>
+	<string name="attend_button">Attend</string>
+	<string name="action_share">Share</string>
+    
     <!-- Login Activity -->
     <string name="password_hint">Password</string>
     <string name="confirm_password_hint">Confirm Password</string>
@@ -28,7 +33,7 @@
     <string name="signup_button">Sign Up</string>
     <string name="submit_button">Submit</string>
 
-    <!-- Home Activity -->
+    <!-- Welcome Activity -->
     <string name="welcome_intro">Welcome, stranger!</string>
     <string name="welcome_message">Hello and welcome to Giggidy! Your one stop shop 
         for all the latest gig news in your area. Come take a look at what we have 

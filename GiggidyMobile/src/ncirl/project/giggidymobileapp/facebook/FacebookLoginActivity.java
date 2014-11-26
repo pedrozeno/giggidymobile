@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.projectattempt.HomeActivity;
 import com.example.projectattempt.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -26,6 +25,8 @@ public class FacebookLoginActivity extends Activity {
 
 	private Button loginButton;
 	private Dialog progressDialog;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

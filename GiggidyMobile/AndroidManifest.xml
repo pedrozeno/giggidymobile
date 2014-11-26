@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -56,11 +56,11 @@
             android:label="@string/title_activity_user_account" >
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name="ncirl.project.giggidymobileapp.facebook.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name=".PlannerActivity"
+            android:name="ncirl.project.giggidymobileapp.facebook.PlannerActivity"
             android:label="@string/title_activity_planner" >
         </activity>
     </application>
